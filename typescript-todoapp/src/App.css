@@ -44,3 +44,6 @@ button{
 button:hover{
   background-color: yellow;
 }
+.icons{
+  font-size: 22px ;
+}

@@ -5,9 +5,16 @@ import { FaEdit } from "react-icons/fa";
 
 function Todo() {
   return (
-   <div>
+   <div style={{display:'flex',flexDirection:'row'
+   ,alignItems:'center',justifyContent:'space-between',
+   border:'1px solid lightgrey',padding:'16px',marginTop:'25px',
+   borderRadius:'5px'}}>
      <div>
       I'm first todo...
+    </div>
+    <div>
+        <IoMdRemoveCircleOutline />
+        <FaCheck/>
     </div>
    </div>
   )
