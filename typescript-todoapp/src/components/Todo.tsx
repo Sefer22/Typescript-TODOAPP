@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoMdRemoveCircleOutline } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
@@ -14,6 +14,8 @@ function Todo({todoProps} :TodoProps) {
   const {id,content} = todoProps;
 
   const dispatch = useDispatch();
+
+  const [editable,setEditable] = useState(false);
 
   const handleRemoveTodo = () =>{
     dispatch(removeTodoById(id));
@@ -31,7 +33,7 @@ function Todo({todoProps} :TodoProps) {
     <div style={{display:'flex',flexDirection:'row'
    ,alignItems:'center',justifyContent:'center'}}>
         <div onClick={handleRemoveTodo} style={{marginRight:'5px'}} className='icons'><IoMdRemoveCircleOutline /></div>
-        <div className='icons'><FaCheck/></div>
+        <div className='icons'><FaEdit/></div>
     </div>
    </div>
   )
