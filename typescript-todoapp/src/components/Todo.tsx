@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { TodoType } from '../types/Types';
 import { useDispatch } from 'react-redux';
-import { removeTodoById } from '../redux/todoSlice';
+import { removeTodoById, updateTodo } from '../redux/todoSlice';
 import { DiVim } from 'react-icons/di';
 
 interface TodoProps {
@@ -23,6 +23,15 @@ function Todo({todoProps} :TodoProps) {
     dispatch(removeTodoById(id));
   }
 
+  const handleUpdateTodo = () =>{
+    const payload :TodoType= {
+      id:id,
+      content:newTodo
+    }
+    dispatch(updateTodo(payload));
+    setEditable(false);
+  }
+
   return (
    <div style={{display:'flex',flexDirection:'row'
    ,alignItems:'center',justifyContent:'space-between',
@@ -30,14 +39,17 @@ function Todo({todoProps} :TodoProps) {
    borderRadius:'5px'}}>
 
      <div> 
-      {editable ? <input type='text' value={newTodo} onChange={(e:React.ChangeEvent<HTMLInputElement>) =>
+      {editable ? <input type='text' style={{width:'400px',border:'none',
+      borderBottom:'1px solid lightgrey',outline:'none'}} value={newTodo} 
+      onChange={(e:React.ChangeEvent<HTMLInputElement>) =>
         setNewTodo(e.target.value)
       }/> : <div>{content}</div>}
+      
     </div>
     <div style={{display:'flex',flexDirection:'row'
    ,alignItems:'center',justifyContent:'center'}}>
         <div onClick={handleRemoveTodo} style={{marginRight:'5px'}} className='icons'><IoMdRemoveCircleOutline /></div>
-        {editable ? <div className='icons'><FaCheck/></div> :  <button onClick={()=> setEditable(true)} className='icons'><FaEdit/></button>}
+        {editable ? <button className='icons' onClick={handleUpdateTodo}><FaCheck/></button> :  <button onClick={()=> setEditable(true)} className='icons'><FaEdit/></button>}
     </div>
    </div>
   )
