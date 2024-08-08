@@ -12,9 +12,10 @@ function Todo() {
      <div>
       I'm first todo...
     </div>
-    <div>
-        <IoMdRemoveCircleOutline />
-        <FaCheck/>
+    <div style={{display:'flex',flexDirection:'row'
+   ,alignItems:'center',justifyContent:'center'}}>
+        <div style={{marginRight:'5px'}} className='icons'><IoMdRemoveCircleOutline/></div>
+        <div className='icons'><FaCheck/></div>
     </div>
    </div>
   )

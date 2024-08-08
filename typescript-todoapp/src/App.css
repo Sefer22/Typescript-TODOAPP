@@ -46,4 +46,5 @@ button:hover{
 }
 .icons{
   font-size: 22px ;
+  cursor: pointer;
 }
