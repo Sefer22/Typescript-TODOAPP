@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { createTodo } from '../redux/todoSlice';
+import { TodoType } from '../types/Types';
 
 function TodoCreate() {
   const dispatch = useDispatch();
@@ -7,7 +9,17 @@ function TodoCreate() {
   const [newTodo,setNewTodo] = useState<string>('');
 
   const handleCreateTodo =() =>{
+    if(newTodo.trim().length==0) {
+      alert("Enter todo!");
+      return;
+    }
 
+    const payload :TodoType= {
+      id:Math.floor(Math.random()*999999999),
+      content:newTodo
+    }
+    dispatch(createTodo(payload));
+    setNewTodo('');
   }
 
   return (
